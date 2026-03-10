@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Saurabh Jaiswal | Web Developer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 60px;
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
+}
+
+nav h2{
+color:#38bdf8;
+}
+
+nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+}
+
+section{
+padding:100px 10%;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+padding:30px;
+margin-top:30px;
+backdrop-filter:blur(10px);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px) scale(1.02);
+}
+
+.skills span{
+display:inline-block;
+background:#1e293b;
+padding:10px 15px;
+border-radius:8px;
+margin:5px;
+}
+
+.project{
+margin-top:20px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+background:#020617;
+}
+
+.hero{
+height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+
+.hero h1{
+font-size:50px;
+color:#38bdf8;
+}
+
+.hero p{
+font-size:20px;
+}
+
+button{
+padding:12px 20px;
+border:none;
+border-radius:8px;
+background:#38bdf8;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<nav>
+<h2>Saurabh</h2>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+
+<h1>Saurabh Jaiswal</h1>
+<p>Web Developer | HTML CSS JavaScript PHP MySQL</p>
+
+<button onclick="scrollToSection()">View My Work</button>
+
+</section>
+
+
+<section id="about">
+
+<h2>About Me</h2>
+
+<div class="card">
+
+<p>
+Motivated fresher Web Developer with strong foundation in HTML, CSS,
+JavaScript and Python. Passionate about building responsive websites
+and learning new technologies.
+</p>
+
+<p>
+Diploma in Computer Science with knowledge of Web Development,
+Database Management and Problem Solving.
+</p>
+
+</div>
+
+</section>
+
+
+<section id="skills">
+
+<h2>Technical Skills</h2>
+
+<div class="card skills">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+<span>PHP</span>
+<span>MySQL</span>
+<span>Python</span>
+<span>C++</span>
+<span>DSA</span>
+<span>MS Word</span>
+<span>Excel</span>
+
+</div>
+
+</section>
+
+
+<section id="projects">
+
+<h2>Projects</h2>
+
+<div class="card project">
+
+<h3>Online Examination System</h3>
+
+<p>
+Secure online exam system with Login/Register authentication,
+dynamic questions and automatic result calculation.
+</p>
+
+<p><b>Tech:</b> HTML, CSS, JavaScript, PHP, MySQL</p>
+
+</div>
+
+
+<div class="card project">
+
+<h3>Smart Timer Web App</h3>
+
+<p>
+Productivity web app with Countdown Timer and Pomodoro technique,
+sound alert and dark mode.
+</p>
+
+<p><b>Tech:</b> HTML, CSS, JavaScript, Python Flask</p>
+
+</div>
+
+</section>
+
+
+<section id="contact">
+
+<h2>Contact</h2>
+
+<div class="card">
+
+<p>Email: saurabhjaiswal2501@gmail.com</p>
+<p>Phone: +91 8112746949</p>
+<p>Location: Jaunpur, Uttar Pradesh</p>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Saurabh Jaiswal | Web Developer</p>
+
+</footer>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
+<script>
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+
+const renderer = new THREE.WebGLRenderer({
+canvas: document.querySelector('#bg')
+});
+
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+camera.position.setZ(30);
+
+const geometry = new THREE.TorusGeometry(10,3,16,100);
+const material = new THREE.MeshStandardMaterial({color:0x38bdf8});
+
+const torus = new THREE.Mesh(geometry, material);
+scene.add(torus);
+
+const pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(20,20,20);
+
+scene.add(pointLight);
+
+function animate(){
+requestAnimationFrame(animate);
+
+torus.rotation.x +=0.01;
+torus.rotation.y +=0.005;
+
+renderer.render(scene,camera);
+}
+
+animate();
+
+function scrollToSection(){
+document.getElementById("projects").scrollIntoView({
+behavior:"smooth"
+});
+}
+
+</script>
+
+</body>
+</html>
